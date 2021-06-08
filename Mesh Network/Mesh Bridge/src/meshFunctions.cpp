@@ -2,15 +2,15 @@
 
 painlessMesh  mesh;
 WiFiClient wifiClient;
-SoftwareSerial hubSerial(RX_PIN, TX_PIN);
-//HardwareSerial hubSerial(2);
+//SoftwareSerial hubSerial(RX_PIN, TX_PIN);
+HardwareSerial hubSerial(2);
 
 String meshName;
 String meshPassword;
 uint32_t meshPort = 5555;
 
 bool initMesh(){
-    hubSerial.begin(115200);
+    hubSerial.begin(9600);
 
     if(!getCredentials()){
         return false;
@@ -44,7 +44,11 @@ bool getCredentials(){
     }
 }
 
-void receivedCallback( const uint32_t &from, const String &msg ) {
-  Serial.printf("bridge: Received from %u msg=%s\n", from, msg.c_str());
-  String topic = "from/" + String(from);
+void receivedCallback(const uint32_t &from, const String &msg ) {
+    hubSerial.println(msg);
+    mesh.sendSingle(from, hubSerial.readString());
+}
+
+void meshLoop(){
+    mesh.update();
 }

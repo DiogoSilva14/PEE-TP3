@@ -3,8 +3,8 @@
 #include <painlessMesh.h>
 #include <meshFunctions.h>
 
-#define   MESH_PREFIX     "hivemesh"
-#define   MESH_PASSWORD   "admin123"
+#define   MESH_PREFIX     "hive_mesh"
+#define   MESH_PASSWORD   "hivetest123"
 #define   MESH_PORT       5555
 
 WiFiClient wifiClient;
