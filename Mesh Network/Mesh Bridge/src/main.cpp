@@ -10,5 +10,6 @@ void setup() {
 }
 
 void loop() {
+    meshLoop();
     return;
 }
