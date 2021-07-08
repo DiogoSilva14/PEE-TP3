@@ -1,7 +1,8 @@
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
+//#include <ESP8266WiFi.h>
 //#include <WiFiClient.h>
-#include <FS.h>
+//#include <FS.h>
+#include <WiFi.h>
 #include <ArduinoJson.h>
 #include <PubSubClient.h>
 #include <meshFunctions.h>

@@ -2,8 +2,8 @@
 
 painlessMesh  mesh;
 WiFiClient wifiClient;
-//SoftwareSerial hubSerial(RX_PIN, TX_PIN);
-HardwareSerial hubSerial(2);
+SoftwareSerial hubSerial(RX_PIN, TX_PIN);
+//HardwareSerial hubSerial(2);
 
 String meshName;
 String meshPassword;
