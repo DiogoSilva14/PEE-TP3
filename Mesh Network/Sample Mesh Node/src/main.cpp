@@ -12,6 +12,20 @@ WiFiClient wifiClient;
 painlessMesh  mesh;
 Scheduler userScheduler;
 
+void register_peripheral(){
+    String registerString = R"({"type":"sensor","parameters":["temperature"],"mac_address":")" + WiFi.macAddress() + R"(","is_mesh":"true"})";
+
+    while(!client.connect("192.168.1.105",4001)){
+        Serial.print(".");
+        delay(100);
+    }
+
+    client.print(registerString);
+    peripheralID = client.readString();
+    Serial.println(peripheralID);
+    client.stop();
+}
+
 bool connectWifi(const char* ssid, const char* pwd){
     WiFi.disconnect();
     WiFi.begin(ssid,pwd);
